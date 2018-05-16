@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
  *
  */
 @Configuration
-public class MyFilterConfiguration {
+public class MyFilterConfig {
 	
 	public class MyFilter implements Filter{
 
