@@ -99,11 +99,26 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- spring boot 测试-end -->
-		
+
 	</dependencies>
 
 	<build>
 		<plugins>
+			<!-- 将项目打为可执行jar，指定入口文件 -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.example.demo.SpringbootTemplateApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
