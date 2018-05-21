@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.custom.gms.modules.attr.dao.BaseCategoryDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.qihai.sys.entity.BaseCategoryEntity" id="baseCategoryMap">
+        <result property="id" column="id"/>
+        <result property="categoryName" column="category_name"/>
+        <result property="categoryCode" column="category_code"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="parentCode" column="parent_code"/>
+        <result property="imageUrl" column="image_url"/>
+        <result property="levelNum" column="level_num"/>
+        <result property="showFlag" column="show_flag"/>
+        <result property="deleteFlag" column="delete_flag"/>
+        <result property="colorName" column="color_name"/>
+        <result property="sizeName" column="size_name"/>
+        <result property="createId" column="create_id"/>
+        <result property="createName" column="create_name"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateId" column="update_id"/>
+        <result property="updateName" column="update_name"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="customerId" column="customer_id"/>
+    </resultMap>
+
+    <select id="selectByCode" parameterType="String" resultMap="baseCategoryMap">  
+        select * from t_base_category where category_code=#{code}  
+    </select> 
+
+	<select id="queryParentList"  resultMap="baseCategoryMap">  
+        select * from t_base_category where level_num=1
+    </select>
+    
+    <select id="querySubnodeList" parameterType="String" resultMap="baseCategoryMap">  
+        select * from t_base_category where parent_id=#{parentID} and parent_code=${parentCode}
+    </select>
+
+
+</mapper>
