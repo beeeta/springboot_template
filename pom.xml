@@ -69,6 +69,19 @@
 		</dependency> 
 		<!-- fastjson-end -->
 		
+		<!-- mybatis-plus-start -->
+	   <dependency>
+          <groupId>com.baomidou</groupId>
+          <artifactId>mybatis-plus</artifactId>
+          <version>2.1.9</version>
+       </dependency>
+		<!--spring boot 上的版本有些滞后 <dependency>
+		  <groupId>com.baomidou</groupId>
+		  <artifactId>mybatisplus-spring-boot-starter</artifactId>
+		  <version>1.0.5</version>
+	   </dependency> -->
+    	<!-- mybatis-plus-end -->
+    	 	
 		<!-- mybatis-start -->
 		<dependency>
 		    <groupId>org.mybatis.spring.boot</groupId>

@@ -9,13 +9,14 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.type.EnumTypeHandler;
 
+import com.baomidou.mybatisplus.handlers.EnumTypeHandler;
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.example.demo.entity.UserEntity;
 import com.example.demo.entity.UserSexEnum;
 
 @Mapper
-public interface UserDao {
+public interface UserDao extends BaseMapper<UserEntity>{
 	@Select("SELECT * FROM t_users")
     @Results({
         @Result(property = "userSexEnum",  column = "user_sex", javaType = UserSexEnum.class,typeHandler=EnumTypeHandler.class),
@@ -31,7 +32,7 @@ public interface UserDao {
     UserEntity getOne(Long id);
 
     @Insert("INSERT INTO users(user_name,user_address,user_sex) VALUES(#{userName}, #{userAddress}, #{userSexEnum})")
-    void insert(UserEntity user);
+    Integer insert(UserEntity user);
 
     @Update("UPDATE users SET user_name=#{userName},user_address=#{userAddress} WHERE id =#{id}")
     void update(UserEntity user);
